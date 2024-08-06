@@ -1,0 +1,11 @@
+version: '3.8'  # 使用 Docker Compose 文件版本 3.8
+
+services:
+  incident-management:
+    image: incident-management:v1.0  # 使用之前构建的 Docker 镜像
+    ports:
+      - "8080:8080"  # 映射容器的 9098 端口到主机的 9098 端口
+    environment:
+      JAVA_OPTS: "-Xmx600m"  # 可选：传递 Java 的环境变量或 JVM 参数
+    restart: unless-stopped  # 自动重启策略
+    container_name: incident-management-container  # 为容器命名
